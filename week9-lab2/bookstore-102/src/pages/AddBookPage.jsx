@@ -104,7 +104,7 @@ const AddBookPage = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/v1/books/', {
+      const response = await fetch('/api/v1/books', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,7 +114,8 @@ const AddBookPage = () => {
           author: formData.author.trim(),
           isbn: formData.isbn.trim(),
           year: parseInt(formData.year),
-          price: parseFloat(formData.price)
+          price: parseFloat(formData.price),
+          is_new: true
         }),
       });
 
@@ -318,7 +319,7 @@ const AddBookPage = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/store-manager/all-book')}
                   className="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold
                     text-gray-700 hover:bg-gray-50 transition-colors"
                 >
